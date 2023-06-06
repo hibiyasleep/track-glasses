@@ -1,0 +1,49 @@
+{
+  "admin": [
+    "foobar"
+  ],
+  "channels": [
+    "somewhere",
+    "channels",
+    "you",
+    "want",
+    "to",
+    "be",
+    "joinned"
+  ],
+  "redemption": {
+    "id": "deadbeef-abcd-ef01-2345-67890abcdef0",
+    "channel": "screen_name",
+    "require_confirmation": true,
+    "trigger": "컨펌 키워드",
+    "message": "시간",
+    "megane_dan": [
+      ""
+    ]
+  },
+  "sq": {
+    "banRate": 0
+  },
+  "mc": {
+    "connections": [
+      {
+        "id": "example",
+        "host": "localhost",
+        "port": 25566,
+        "pass": "example",
+        "channels": [
+          "example"
+        ]
+      },
+    ],
+    "channels": {
+      "foobar": {
+        "text": "예시",
+        "color": "#359bff"
+      }
+    },
+    "ignore": [
+      "bbangddeock"
+    ]
+  }
+}
