@@ -25,6 +25,15 @@
     "banRate": 0,
     "channels": []
   },
+  "nightbot": {
+    "authorized_channel": {
+      "promoteReward": "deadbeef-dead-beef-dead-beef00000075",
+      "id": "optional"
+    },
+    "unauthorized_channel": {
+      "id": "deadbeefdeadbeefdeadbeefdeadbeef"
+    }
+  },
   "ban_congrats": [
     "channel_id"
   ],

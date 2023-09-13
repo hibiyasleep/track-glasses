@@ -20,7 +20,7 @@ const log = new Logger('tmr')
 
 const config = JSON.parse(fs.readFileSync('./config.json'))
 
-const TOKENS = JSON.parse(fs.readFileSync('C:/Users/hibiya/.node-red/.tokens.json'))
+const TOKENS = JSON.parse(fs.readFileSync('./.tokens.json'))
 const TOKEN = { ...TOKENS.twitch.app, ...TOKENS.twitch.hibiya_bot }
 
 //

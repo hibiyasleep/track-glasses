@@ -4,6 +4,7 @@ import mc from './mc.mjs'
 import glasses from './glasses.mjs'
 import dmrv from './dmrv-topscore.mjs'
 import reload from './reload.mjs'
+import nightbot from './nightbot.mjs'
 import banCongrats from './ban-congrats.mjs'
 
 const MODULES = [
@@ -13,6 +14,7 @@ const MODULES = [
   ...glasses,
   ...dmrv,
   ...reload,
+  ...nightbot,
   ...banCongrats
 ]
 
