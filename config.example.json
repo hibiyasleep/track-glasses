@@ -22,8 +22,12 @@
     ]
   },
   "sq": {
-    "banRate": 0
+    "banRate": 0,
+    "channels": []
   },
+  "ban_congrats": [
+    "channel_id"
+  ],
   "mc": {
     "connections": [
       {
