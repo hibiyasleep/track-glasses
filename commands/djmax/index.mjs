@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom'
 import axios from 'axios'
 
-import ALIASES from './dmrv-aliases.mjs'
+import ALIASES from './aliases.mjs'
 
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/16Lece3Rbov14mb6Jf7C8iCrDDr6lyXkn-pra8QJPcaw/htmlview'
 const SHEET_MAPPING = {

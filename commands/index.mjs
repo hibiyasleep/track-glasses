@@ -2,9 +2,9 @@ import echo from './echo.mjs'
 import sq from './sq.mjs'
 import mc from './mc.mjs'
 import glasses from './glasses.mjs'
-import dmrv from './dmrv-topscore.mjs'
+import djmax from './djmax/index.mjs'
 import reload from './reload.mjs'
-import nightbot from './nightbot.mjs'
+import nightbot from './nightbot/index.mjs'
 import banCongrats from './ban-congrats.mjs'
 
 const MODULES = [
@@ -12,7 +12,7 @@ const MODULES = [
   ...sq,
   ...mc,  
   ...glasses,
-  ...dmrv,
+  ...djmax,
   ...reload,
   ...nightbot,
   ...banCongrats
