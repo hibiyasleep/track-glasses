@@ -60,7 +60,7 @@ export default [{
     if(!found)
       return
 
-    const foundTitle = found.childNodes[2].textContent
+    const foundTitle = found.childNodes[2].textContent.replaceAll('.', ',') // 아오 빵떡시치
     const foundPattern = found.childNodes[4].textContent
     const foundScore = found.childNodes[5].textContent
     const foundPercent = found.childNodes[6].textContent
