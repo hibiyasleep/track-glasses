@@ -52,7 +52,7 @@ const formatters = {
     const [, last] = /([\uac00-\ud7a3])[^\uac00-\ud7a3a-zA-Z0-9 ]*$/
       .exec(text) ?? []
     if(!last) return ''
-    
+
     const code = last.charCodeAt(0) - 0xac00
     return (0 <= code && code <= (0xd7a3 - 0xac00))?
       (code % 28)? filled : empty : unknown
@@ -83,7 +83,7 @@ export default [{
             o.color = 'gray'
           if(m.isAction)
             o.italic = true /*color: m.tags?.color*/
-          
+
           return o
         })
       ].filter(_ => _)
@@ -92,9 +92,10 @@ export default [{
   }
 }, {
   name: 'mc-relay-redeem',
-  type: 'redeem',
-  test: (redemption, { rconmgr }) =>
-    rconmgr.getRoutableRCONs(util.uid.login(redemption.channel_id)),
+  type: 'pubsub',
+  test: ({ type, redemption }, { rconmgr }) =>
+     type === 'reward-redeemed'
+  && rconmgr.getRoutableRCONs(util.uid.login(redemption.channel_id)),
   run(redemption, { log, timer, config }, rcons) {
     for(const rcon of rcons) {
       const channel = util.uid.login(redemption.channel_id)
@@ -140,13 +141,13 @@ export default [{
   && rconmgr.getRoutableRCONs(message.params),
   async run(m, { chats }, rcons) {
     const hasMultipleReply = rcons.length > 1
-    
+
     const request = async rcon => {
       const response = await rcon.send(2, m.content.slice(5))
       const prefix = hasMultipleReply? `[${rcon.id}] ` : ''
       chats.send(`@reply-parent-msg-id=${m.tags?.id} PRIVMSG ${m.params} :${prefix}${response}`)
     }
-      
+
     rcons.forEach(async (rcon, index) => {
       try {
         setTimeout(() => request(rcon), index * 1000)

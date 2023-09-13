@@ -36,11 +36,12 @@ export default [{
   }
 }, {
   name: 'glasses-track',
-  type: 'redeem',
-  test: (redemption, ctx) =>
-     redemption.reward.id === ctx.config.redemption.id
-  && !ctx.config.redemption.megane_dan.includes(redemption.user.login),
-  run(redemption, { log, timer }) {
+  type: 'pubsub',
+  test: ({ type, redemption }, ctx) =>
+     type === 'reward-redeemed'
+  && redemption.reward.id === ctx.config.redemption.id
+  && !(ctx.config.redemption.megane_dan?.includes(redemption.user.login) ?? false),
+  run(redemption, { log, timer, config }) {
     const against = ``
     const expiresAt = new Date(redemption.reward.cooldown_expires_at)
     const timeout = expiresAt - new Date()

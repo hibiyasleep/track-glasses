@@ -5,7 +5,7 @@ import * as util from '../lib/util.mjs'
 export default [{
   name: 'reload',
   type: 'chat',
-  test: message =>
+  test: (message, { config }) =>
      config.admin.includes(message.source?.nick)
   && message.content === '!reload',
   async run(m, ctx) {
