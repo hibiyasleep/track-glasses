@@ -17,13 +17,13 @@ let lastCached = -1
 const parseCommand = message => {
   let match, title, button, pattern
 
-  ;[match, title, button, pattern] = /^!전일 (.+?) ?([4568])[bk ]?(mx|sc)?$/i.exec(message) || []
+  ;[match, title, button, pattern] = /^!(?:전일|wjsdlf) (.+?) ?([4568])[bk ]?(mx|sc)?$/i.exec(message) || []
   if(match) {
     title = ALIASES[title] || title
     return [ title.toLowerCase(), button, pattern?.toUpperCase() ?? '' ]
   }
   
-  ;[match, button, title] = /^!전일 ([4568])(.+?)$/i.exec(message) || []
+  ;[match, button, title] = /^!(?:전일|wjsdlf) ([4568])(.+?)$/i.exec(message) || []
   if(match) {
     title = ALIASES[title] || title
     return [ title.toLowerCase(), button, '' ]
@@ -36,7 +36,7 @@ export default [{
   name: 'drmv-topscore',
   type: 'chat',
   cooldown: 2000,
-  test: m => /^!전일 /i.test(m.content),
+  test: m => /^!(전일|wjsdlf) /i.test(m.content),
   async run(m, { chats }) {
     
     const [title, button, pattern] = parseCommand(m.content)
@@ -64,10 +64,11 @@ export default [{
     const foundPattern = found.childNodes[4].textContent
     const foundScore = found.childNodes[5].textContent
     const foundPercent = found.childNodes[6].textContent
+    const foundPlayer = found.childNodes[7].textContent
 
     chats.send(
       `@reply-parent-msg-id=${m.tags?.id} PRIVMSG ${m.params} :`
-    + `${foundTitle} ${button}B ${foundPattern}: ${foundPercent} (${foundScore})`
+    + `${foundTitle} ${button}B ${foundPattern}: ${foundPercent} ${foundScore} (${foundPlayer})`
     )
   }
 }]
